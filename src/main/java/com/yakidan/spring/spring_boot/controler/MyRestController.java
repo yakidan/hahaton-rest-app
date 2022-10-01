@@ -2,8 +2,12 @@ package com.yakidan.spring.spring_boot.controler;
 
 import com.yakidan.spring.spring_boot.entity.Employee;
 import com.yakidan.spring.spring_boot.service.EmployeeService;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 
 import java.util.List;
 
@@ -11,9 +15,12 @@ import java.util.List;
 @RequestMapping("/api")
 public class MyRestController {
 
+
     @Autowired
     private EmployeeService employeeService;
 
+//    @ApiOperation(value = "получить список исполнителей", notes = "получить список исполнителей")
+//    @ApiImplicitParam(name = "id", value = "User ID", required = true, dataType = "Integer", paramType = "path")
     @GetMapping("/employees")
     public List<Employee> showAllEmployees() {
         List<Employee> employees = employeeService.getAllEmployees();
@@ -47,4 +54,6 @@ public class MyRestController {
         employeeService.deleteEmployee(id);
         return "Employee with Id = " + id + " was deleted";
     }
+
+
 }

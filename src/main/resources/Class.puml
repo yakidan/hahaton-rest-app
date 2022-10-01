@@ -1,0 +1,105 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+'abstract class AbstractList
+'abstract AbstractCollection
+'interface List
+'interface Collection
+'
+'List <|-- AbstractList
+'Collection <|-- AbstractCollection
+'
+'Collection <|- List
+'AbstractCollection <|- AbstractList
+'AbstractList <|-- ArrayList
+'
+'class ArrayList {
+'Object[] elementData
+'size()
+'}
+'
+'enum TimeUnit {
+'DAYS
+'HOURS
+'MINUTES
+'}
+
+
+
+abstract class User{
+#String name
+#String surname
+#Role role
++getName()
++setName()
++getSurname()
++setSurname()
++getRole()
+
+}
+
+class Admin{
+-List<Student> students
+-List<Teacher> teacher
++getStudents()
++getTeacher()
++setTeacherById(int id, Teacher teacher)
++setStudentById(int id, Student student)
+}
+
+class Student{
+List<Task> tasks
++getTasks()
++getTeachers()
+}
+
+class Teacher{
+-Map<String,List<Task>> studentsTasks
++addTasks(String studentId)
++getStudentsTasks(String studentId)
++createTaskForStudent(String studentId,Task)
+}
+class Task{
+-String title
+-String description
+-List<Jpg> attachments
+-TaskStatus status
++getTitle()
++setTitle()
++getDescription()
++setDescription()
++getAttachments()
++addAttachment(Jpg attachment)
++deleteAttachment(int id)
++getStatus()
++setStatus(TaskStatus newStatus)
+}
+
+enum Role {
+STUDENT
+TEACHER
+ADMIN
+}
+
+enum TaskStatus {
+DONE
+NOT_DONE
+}
+
+User <|- Student
+User *-- Role
+User <|- Teacher
+User <|- Admin
+
+Student "1" -- "*" Teacher
+Student "*" -- "1" Teacher
+Student "1" *-- "*" Task
+Teacher "1" o-- "*" Task
+Task "1" *-- "1" TaskStatus
+
+
+
+
+
+@enduml
+
