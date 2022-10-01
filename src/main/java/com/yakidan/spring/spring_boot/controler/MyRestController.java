@@ -11,6 +11,7 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 
 import java.util.List;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api")
 public class MyRestController {
@@ -19,7 +20,7 @@ public class MyRestController {
     @Autowired
     private EmployeeService employeeService;
 
-//    @ApiOperation(value = "получить список исполнителей", notes = "получить список исполнителей")
+    //    @ApiOperation(value = "получить список исполнителей", notes = "получить список исполнителей")
 //    @ApiImplicitParam(name = "id", value = "User ID", required = true, dataType = "Integer", paramType = "path")
     @GetMapping("/employees")
     public List<Employee> showAllEmployees() {
