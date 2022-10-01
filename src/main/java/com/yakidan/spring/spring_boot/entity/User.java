@@ -10,6 +10,12 @@ import javax.persistence.*;
 @Entity
 @Table(name = "users")
 public class User {
+    public User(String nickname, String firstName, String lastName, String password) {
+        this.nickname = nickname;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.password = password;
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

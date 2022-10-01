@@ -14,6 +14,7 @@ public class UserService {
     UserRepository repository;
 
     public List<User> getAllUser() {
+
         return repository.findAll();
     }
 
@@ -25,7 +26,11 @@ public class UserService {
     }
 
     public User addNewUser(User user) {
-        return repository.save(user);
+        User newUser = new User(user.getNickname(),
+                user.getFirstName(),
+                user.getLastName(),
+                user.getPassword());
+        return repository.save(newUser);
     }
 
     public String deleteUserById(int id) {
