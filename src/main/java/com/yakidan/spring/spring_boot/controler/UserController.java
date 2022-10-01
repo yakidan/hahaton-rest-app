@@ -20,6 +20,7 @@ public class UserController {
         return userService.getAllUser();
     }
 
+
     @GetMapping("/users/{id}")
     public User getUserById(@PathVariable int id) {
         return userService.getUserById(id);
