@@ -26,6 +26,7 @@ public class EmotionPointController {
         return emotionPointService.getAllEmotionPoint();
     }
 
+
     @GetMapping("/user/{id}")
     public List<EmotionPoint> getAllEmotionPointByUser(@PathVariable int id) {
         return emotionPointService.getAllEmotionPointByUser(id);
