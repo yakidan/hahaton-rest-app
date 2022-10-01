@@ -10,8 +10,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Date;
 import java.util.List;
 
+@CrossOrigin
 @RestController
-@RequestMapping("/point")
+@RequestMapping("/api/point")
 public class EmotionPointController {
 
     @Autowired
@@ -41,6 +42,6 @@ public class EmotionPointController {
     public EmotionPoint createEmotionPointByUser(@RequestBody EmotionPoint point,
                                                  @PathVariable int id) {
         User user = userService.getUserById(id);
-        return emotionPointService.saveEmotionPointWithUser(point, user,new Date());
+        return emotionPointService.saveEmotionPointWithUser(point, user, new Date());
     }
 }
