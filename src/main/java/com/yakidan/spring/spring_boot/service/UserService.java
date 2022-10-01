@@ -3,6 +3,7 @@ package com.yakidan.spring.spring_boot.service;
 import com.yakidan.spring.spring_boot.entity.User;
 import com.yakidan.spring.spring_boot.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,8 +14,10 @@ public class UserService {
     @Autowired
     UserRepository repository;
 
-    public List<User> getAllUser() {
+    @Autowired
+    PasswordEncoder passwordEncoder;
 
+    public List<User> getAllUser() {
         return repository.findAll();
     }
 
@@ -29,7 +32,7 @@ public class UserService {
         User newUser = new User(user.getNickname(),
                 user.getFirstName(),
                 user.getLastName(),
-                user.getPassword());
+                passwordEncoder.encode(user.getPassword()));
         return repository.save(newUser);
     }
 
